@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+	<context:annotation-config />
+	<!-- 默认的注解映射的支持 ,它会自动注册DefaultAnnotationHandlerMapping 与AnnotationMethodHandlerAdapter,
+	 <mvc:resources ><mvc:view-controller > 需要开启 DefaultAnnotationHandlerMapping?
+	 注意开了之后，与下面单开AnnotationMethodHandlerAdapter时拦截器handler不一样。-->
+	<mvc:annotation-driven />
+	
+	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射,用了<mvc:annotation-driven/>就不用开 
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/> 
+	-->
+	
+	<!-- 自动扫描注解的bean -->
+	<context:component-scan base-package="com.joven" />
+
+	<!-- 上传控制 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"	p:defaultEncoding="utf-8" />
+
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<!-- 多个拦截器,顺序执行 -->
+		<mvc:interceptor>  
+			<!-- 如果不配置或/*,将拦截所有的Controller 可以使用正则表达式对url进行匹配，从而更细粒度的进行拦截(.*/entryOrJsonController\.do\?action=reg.*); -->
+	        <mvc:mapping path="/bbs/topic.do"/>
+	        <mvc:mapping path="/bbs/reply.do"/> 
+	        <bean class="com.joven.Interceptor.AuthorityInterceptor"/>
+	    </mvc:interceptor> 
+	</mvc:interceptors>
+
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/view/" p:suffix=".jsp" />
+	
+		
+	<!-- 将指定路径的请求直接转到对应的view上，而不需要特定的controller来处理请求 . 
+	注意：此处的映射路径是/hello.do,因为web.xml配置的是*.do，如果只用/hello将不被Spring DispatcherServlet拦截到而无法定向 
+	<mvc:view-controller path="/hello.do" view-name="hello" />
+	-->
+	
+	<!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd 
+	<mvc:resources mapping="/js/**" location="/js/" />
+	-->	
+		
+</beans>  
