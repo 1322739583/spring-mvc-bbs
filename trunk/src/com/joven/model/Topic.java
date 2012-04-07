@@ -112,7 +112,7 @@ public class Topic {
 	}
 
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="userID",referencedColumnName="account")
+	@JoinColumn(name="userID")
 	public User getAuthor() {
 		return author;
 	}

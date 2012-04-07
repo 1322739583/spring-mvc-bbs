@@ -88,7 +88,7 @@ public class Reply {
 	}
 
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="userID",referencedColumnName="account")
+	@JoinColumn(name="userID")
 	public User getAuthor() {
 		return author;
 	}

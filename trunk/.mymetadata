@@ -2,9 +2,9 @@
 <project-module
   type="WEB"
   name="springbbs"
-  id="myeclipse.1333712915984"
-  context-root="/springbbs"
-  j2ee-spec="6.0"
+  id="myeclipse.1333810386734"
+  context-root="/spring"
+  j2ee-spec="5.0"
   archive="springbbs.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />

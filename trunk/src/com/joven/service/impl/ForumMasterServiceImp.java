@@ -14,7 +14,7 @@ public class ForumMasterServiceImp extends BaseServiceImp implements ForumMaster
 	@Transactional(propagation=Propagation.REQUIRED)
 	public int addForumMaster(ForumMaster forumMaster){
 		//判断用户是否存在
-		if (!dao.isExists("from User where account=?", forumMaster.getUserID())){
+		if (!dao.isExists("from User where id=?", forumMaster.getUserID())){
 			return 1;
 		}
 
