@@ -75,7 +75,7 @@ public class BaseDAOImp extends HibernateDaoSupport implements BaseDAO {
     public int getNum(String hql){
 		List<Integer> lst=this.getHibernateTemplate().find(hql);
     	if (lst!=null&&lst.size()>0){
-    		return (Integer) lst.get(0);
+    		return lst.get(0);
     	}
     	else{
     		return 0; 
