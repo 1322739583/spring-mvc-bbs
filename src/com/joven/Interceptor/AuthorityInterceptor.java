@@ -20,11 +20,12 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
 	private ForumPermissionService forumPermissionService;
 	
 	// 重写 preHandle()方法，在业务处理器处理请求之前对该请求进行拦截处理
+	@Override
 	public boolean preHandle(HttpServletRequest request,HttpServletResponse response, Object handler) throws Exception {
 		//进行修改与删除操作时，根据传进来topic和reply的account来判断不安全,但可免查数据库
 
 		//取当前用户
-		User user=(User) request.getSession().getAttribute("user");
+		User user=(User) request.getSession().getAttribute("user"); 
 		
 		
  		//不对超级管理员做任何限制做任何限制

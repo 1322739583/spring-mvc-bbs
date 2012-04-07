@@ -115,7 +115,7 @@ public class ForumGroupServiceImp extends BaseServiceImp implements	ForumGroupSe
 			dao.initialize(fg.getForums());
 			Iterator<Forum> fit=fg.getForums().iterator();
 			while (fit.hasNext()){
-				Forum forum=(Forum)fit.next();
+				Forum forum=fit.next();
 				dao.initialize(forum.getMasters());
 			}
 		}
