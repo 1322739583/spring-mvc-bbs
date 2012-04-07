@@ -1,10 +1,12 @@
 package com.joven.service.impl;
 
 import java.util.List;
+
+import org.springframework.stereotype.Component;
 import com.joven.service.UserService;
 import com.joven.model.User;
 
-//@Component("userServiceImp")
+@Component("userServiceImp")
 public class UserServiceImp extends BaseServiceImp implements UserService {
 
 	//新增用户 0成功，1邮箱已存在 2用户已存在

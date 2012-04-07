@@ -12,14 +12,9 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<context:annotation-config />
-	<!-- 默认的注解映射的支持 ,它会自动注册DefaultAnnotationHandlerMapping 与AnnotationMethodHandlerAdapter,
-	 <mvc:resources ><mvc:view-controller > 需要开启 DefaultAnnotationHandlerMapping?
-	 注意开了之后，与下面单开AnnotationMethodHandlerAdapter时拦截器handler不一样。-->
-	<mvc:annotation-driven />
 	
-	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射,用了<mvc:annotation-driven/>就不用开 
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/> 
-	-->
+	<!-- 开启默认的注解映射的支持 -->
+	<mvc:annotation-driven />
 	
 	<!-- 自动扫描注解的bean -->
 	<context:component-scan base-package="com.joven" />
@@ -80,20 +75,7 @@
     </bean> 
 
 	
-	<!-- 如果要在程序中定义事务，下面tx和aop就配置就可以省略 -->
-	<!-- 定义一个事务通知txAdvice,配置事务的传播特性 -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<!-- 所有以list、load、get及 is开头的业务逻辑方法均不需要事务控制且只读 -->
-			<tx:method name="list*" propagation="SUPPORTS" read-only="true"/>
-			<tx:method name="load*" propagation="SUPPORTS" read-only="true"/>
-			<tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
-			<tx:method name="is*" propagation="SUPPORTS" read-only="true"/>
-			<!-- 设置所有方法均进行事务控制，如果当前没有事务，则新建一个事务 -->
-			<tx:method name="*" propagation="REQUIRED"/>
-		</tx:attributes>
-	</tx:advice>
-	
+	<!-- 如果要在代码注解中定义事务，下面tx和aop就配置就可以省略  注解：@Transactional(propagation=Propagation.REQUIRED) -->
 	<!-- 基于AOP技术的事务管理实现 -->
 	<aop:config>
 		<!-- 定义一个事务切入点,拦截com.joven.service.impl包中所有类的所有方法 -->
@@ -102,5 +84,17 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut"/>
 	</aop:config>	
 	
+	<!-- 定义一个事务通知txAdvice,配置事务的传播特性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 所有以add、update、save及 del开头的业务逻辑方法均做事务控制 -->
+			<tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="del*" propagation="REQUIRED"/>
+			<!-- 设置其它所有方法均可以在事务内运行但也可以在无事务环境下运行 -->
+			<tx:method name="*" propagation="SUPPORTS"/>
+		</tx:attributes>
+	</tx:advice>
 	
 </beans>  
