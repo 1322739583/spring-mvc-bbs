@@ -11,24 +11,27 @@ import com.joven.model.Forum;
 import com.joven.service.ForumService;
 
 @Controller
-@RequestMapping("/bbs/forum.do")
+@RequestMapping("/forum.do")
 public class ForumController{
 
 	@Resource(name="forumServiceImp")
 	private ForumService forumService;
 	
 	@RequestMapping(params="method=save")
-	public String add(Forum forum,ModelMap model,
-			HttpServletRequest request, HttpServletResponse response){
-		int forumGroupID=Integer.parseInt(request.getParameter("forumGroupID"));
-		forumService.addForum(forum,forumGroupID);
+	public String add(Forum forum,ModelMap model,HttpServletRequest request, HttpServletResponse response){
+		//int forumGroupID=Integer.parseInt(request.getParameter("forumGroupID"));
+		forumService.save(forum);
 		return "redirect:forumgroup.do?method=listAll";
 	}
 	
 	@RequestMapping(params="method=update")
 	public String update(Forum forum,ModelMap model,
 			HttpServletRequest request, HttpServletResponse response){
-		forumService.updateForumTitle(forum);
+		Forum dbForum=forumService.getById(forum.getId());
+		dbForum.setName(forum.getName());
+		dbForum.setDescription(forum.getDescription());
+		
+		forumService.update(dbForum);
 		
 		//从设置页面进入时，返回设置页面
 		if (request.getParameter("formset")!=null){
@@ -41,7 +44,7 @@ public class ForumController{
 	@RequestMapping(params="method=delete")
 	public String del(Forum forum,ModelMap model,
 			HttpServletRequest request, HttpServletResponse response){
-		forumService.delForums(forum);
+		forumService.delete(forum);
 		return "redirect:forumgroup.do?method=listAll";
 	}
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="springbbs"
+  name="bbs"
   id="myeclipse.1333810386734"
-  context-root="/spring"
+  context-root="/bbs"
   j2ee-spec="5.0"
-  archive="springbbs.war">
+  archive="bbs.war">
   <attributes>
-    <attribute name="webrootdir" value="WebRoot" />
+    <attribute name="webrootdir" value="/WebRoot" />
   </attributes>
 </project-module>
 
