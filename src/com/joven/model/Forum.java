@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 @Entity
-@Table(name="bbs_forums")
+@Table(name="bbs_forum")
 public class Forum {
 	private int id;
 	private String name;
@@ -118,7 +118,7 @@ public class Forum {
 	}
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="fgID")
+	@JoinColumn(name="ForumGroupID")
 	public ForumGroup getForumGroup() {
 		return forumGroup;
 	} 

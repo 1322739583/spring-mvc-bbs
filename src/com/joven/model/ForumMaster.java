@@ -13,7 +13,7 @@ public class ForumMaster {
 	private String userID;
 	
 	@Id
-	@Column(name="mngID")
+	@Column(name="masterID")
 	public String getId() {
 		return id;
 	}

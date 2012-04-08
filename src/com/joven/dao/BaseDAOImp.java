@@ -83,8 +83,8 @@ public class BaseDAOImp extends HibernateDaoSupport implements BaseDAO {
     }
     
     //指定条件记录是否存在
-    @SuppressWarnings("rawtypes")
-    public boolean isExists(String hql, Object... values){
+    @SuppressWarnings("unchecked")
+	public boolean isExists(String hql, Object... values){
     	Query query = this.createQuery(hql, values);
     	query.setMaxResults(1);
 		List lst=query.list();

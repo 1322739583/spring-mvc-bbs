@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 @Entity
-@Table(name="bbs_forumgroups")
+@Table(name="bbs_ForumGroup")
 public class ForumGroup {
 	private int id;
 	private String name;
@@ -25,7 +25,7 @@ public class ForumGroup {
 	@Id
     @GeneratedValue(strategy = GenerationType.TABLE,generator="forumgroup_generator")
     @TableGenerator(name = "forumgroup_generator",table="BBS_GENERATOR",pkColumnName="gen_name",valueColumnName="gen_value",pkColumnValue="forumgroup_pk",allocationSize=1)
-	@Column(name="FGID")
+	@Column(name="ForumGroupID")
 	public int getId() {
 		return id;
 	}
@@ -34,7 +34,7 @@ public class ForumGroup {
 		this.id = id;
 	}
 	
-	@Column(name="FGName")
+	@Column(name="ForumGroupName")
 	public String getName() {
 		return name;
 	}
@@ -43,7 +43,7 @@ public class ForumGroup {
 		this.name = name;
 	}
 	
-	@Column(name="FGOrder")
+	@Column(name="ForumGroupOrder")
 	public int getOrder() {
 		return order;
 	}

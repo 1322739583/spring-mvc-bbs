@@ -14,7 +14,7 @@ import javax.persistence.TableGenerator;
 import com.joven.model.User;
 
 @Entity
-@Table(name="bbs_topics")
+@Table(name="bbs_topic")
 public class Topic {
 	private int forumID;
 	private int topicID;
