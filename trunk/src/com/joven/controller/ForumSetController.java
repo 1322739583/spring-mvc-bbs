@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.joven.model.Forum;
 import com.joven.model.ForumMaster;
 import com.joven.model.ForumPermission;
-import com.joven.model.ForumPermissionPK;
 import com.joven.service.ForumMasterService;
 import com.joven.service.ForumPermissionService;
 import com.joven.service.ForumService;
@@ -70,10 +69,9 @@ public class ForumSetController{
 	//更新权限
 	@RequestMapping(params="method=updatepermission")
 	public void updatePmsn(ForumPermission permission,ModelMap model,HttpServletRequest request, HttpServletResponse response) throws Exception{
-		ForumPermissionPK fpPK=new ForumPermissionPK();
-		fpPK.setRoleID(Integer.parseInt(request.getParameter("roleID")));
-		fpPK.setForumID(Integer.parseInt(request.getParameter("forumID")));
-		permission.setFpPK(fpPK);
+		if (permission.getId().trim().equals("")){
+			permission.setId("F"+permission.getForumID()+"R"+permission.getRoleID());
+		}
 		fpSvc.updateForumPermission(permission);
 		response.getWriter().write("saved");
 	}
