@@ -18,8 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
-    <script src="<%=basePath%>/js/jquery-1.4.4.min.js"></script>
-	<link href="<%=basePath%>/css/bbs/style/style.css" rel="stylesheet" type="text/css" />
+    <script src="<%=basePath%>/script/jquery-1.4.4.min.js"></script>
+	<link href="style/managerstyle.css" rel="stylesheet" type="text/css" />
   </head>
 
 <script type="text/javascript">
@@ -52,7 +52,7 @@ function showedit(obj){
 function postpm(){
 	  $.ajax({
 		   type: "POST",
-		   url: "bbs/forumset.do?method=updatepermission",
+		   url: "forumset.do?method=updatepermission",
 		   data: $("#formpm").serialize(),
 		   dataType:"text",
 		   success: function(msg){
@@ -74,10 +74,16 @@ function postpm(){
 </script>
 
 	<body>
-		<div class="posti"><div class="homePic"></div>您现在的位置：
-		<a href="bbs/forumgroup.do?method=listAll">【后台管理】</a>
-		&nbsp;-&nbsp;【版块设置】</div><br/><br/>
 		<center>
+		<div class="tit">论坛后台管理</div>
+		<table width="782" border="0" cellspacing="0" bgcolor="#A6C6F9" style="margin-bottom:15px;">
+		<tr><td>
+		<div class="fnc">
+		<span class="floatrigth"> <a href="manager/userlogout.action">退出</a></span> 
+		<span><a href="forumgroup.do?method=listAll">版块管理</a>&nbsp; &nbsp; <a href="manager/userSet.jsp">用户管理</a></span>
+		</div> 
+		</td></tr>
+		</table>
 		
 		<c:forEach items="${forum.permission}" var="pms">
 			<c:if test="${pms.fpPK.roleID eq 1}"> <c:set var="memberPms" value="${pms}"/> </c:if>
@@ -88,12 +94,12 @@ function postpm(){
 		<table>
 		<!-- 版块信息 -->
 		<tr><td colspan="2">
-			<form action="bbs/forum.do?method=update" method="post">
-		    <table width="780" height="123" cellspacing="1"  class="tb1">
+			<form action="forum.do?method=update" method="post">
+		    <table width="780" height="123" cellspacing="1"  class="tbpemission">
 		    <tr ><th width="717" align="center">版块设置</th></tr>
 		    
 		      <tr>
-		        <td height="63" valign="top">
+		        <td height="63" valign="top" style="text-align:left;">
 		        	<div id="forums">
 		        	<p class="fh2" >版块名称：${forum.name}</p>
 		          	<p>版块描述：${forum.description}</p>
@@ -124,10 +130,10 @@ function postpm(){
 		<tr align="left">
 			<!-- 用户权限 -->
 			<td valign="top">
-				<form id="formpm" action="bbs/forumset.do?method=updatepermission" method="post">
+				<form id="formpm" action="forumset.do?method=updatepermission" method="post">
 				<input type="hidden" name="roleID" value="1">
 				<input type="hidden" name="forumID" value="${forum.id}">
-				<table width="300" cellspacing="1" class="tb2">
+				<table width="300" cellspacing="1" class="tbpemission">
 				<tr><th colspan="2" align="center">普通用户权限设置</th></tr>
 				<tr class="trtitle" align="center"><td > 功能 </td><td>是否允许</td></tr>
 				<tr><td> 浏览列表 </td><td><input type="checkbox" name="viewList" value="true" ${memberPms.viewList?'checked':''}/></td></tr>
@@ -145,9 +151,9 @@ function postpm(){
 			
 			<!-- 版主 -->
 			<td valign="top">
-				<form action="bbs/forumset.do?method=addmaster" method="post">
+				<form action="forumset.do?method=addmaster" method="post">
 				<input type="hidden" name="forumID" value="${forum.id}">
-				<table cellspacing="1" class="tb2" width="300">
+				<table cellspacing="1" class="tbpemission" width="300">
 				  <tr>
 				    <th colspan="2">版主管理</th>
 				  </tr>
@@ -168,11 +174,11 @@ function postpm(){
 		
 		</tr>
 		
-		<tr><td colspan="2" align="center"><br/><a href="bbs/forumgroup.do?method=listAll"><img src="css/bbs/images/return.gif" border="0"></a></td></tr>
+		<tr><td colspan="2" align="center"><br/><a href="forumgroup.do?method=listAll"><img src="images/return.gif" border="0"></a></td></tr>
 		</table>
 	</div>
 	
-
+	<div class="copyright">版权所有</div>  
 	</center>
  </body>
 </html>
