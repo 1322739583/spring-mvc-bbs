@@ -53,11 +53,49 @@
 	display:none;
 }
 
+.floatrigth { float:right; }
+
+.tbpemission { background:#AED6FF; }
+
+.tbpemission td {
+	text-align:center;
+	padding: 3px;
+	background: #FFF;
+	font-size:12px;
+}
+
+.tbpemission th {
+	background:url(../images/repx.jpg) repeat-x;
+	height:24px;
+	line-height:24px;
+	font-size: 13px;
+	text-align:left;
+	text-indent:1em;
+	color:#fff;
+}
+
+
+.bbsadminbtn {
+	width:65px;
+	height:20px;
+	border:1px solid #2991ff;
+	background:#f6f9fc;
+	text-align:center;
+	cursor:pointer;
+	font-size: 12px;
+	margin:3px;
+}
+
+
 .copyright{
 	border:#0E2090 1px solid;font-size:12px;
 	text-align:center; padding-top:3px;padding-bottom:3px;background:#AED6FF;margin-top:40px; width:780px;
 }
 
+
+
+
+/*以下未整理*/
 
 /*admi manage */	
 .tbman { 
@@ -105,16 +143,7 @@
 	margin:0 auto
 }
 
-.bbsadminbtn {
-	width:65px;
-	height:20px;
-	border:1px solid #2991ff;
-	background:#f6f9fc;
-	text-align:center;
-	cursor:pointer;
-	font-size: 12px;
-	margin:3px;
-}
+
 
 .homePic {
 	width:24px;
@@ -374,26 +403,6 @@ textarea {
 }
 
 
-.tb2 { background:#AED6FF; }
-
-.tb2 td {
-	text-align:center;
-	padding: 3px;
-	background: #FFF;
-	font-size:12px;
-}
-
-.tb2 th {
-	background:url(../images/repx.jpg) repeat-x;
-	height:24px;
-	line-height:24px;
-	font-size: 13px;
-	text-align:left;
-	text-indent:1em;
-	color:#fff;
-}
-
-.flrt { float:right; }
 
 .fh1 {
 	font-size:15px;

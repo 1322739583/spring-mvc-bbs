@@ -17,7 +17,7 @@ import com.joven.service.ForumPermissionService;
 import com.joven.service.ForumService;
 
 @Controller
-@RequestMapping("/bbs/forumset.do")
+@RequestMapping("/forumset.do")
 public class ForumSetController{
 	
 	//Spring 注入
@@ -32,14 +32,14 @@ public class ForumSetController{
 		int forumID=Integer.parseInt(request.getParameter("forumID"));
 		Forum forum=forumService.getForum(forumID,true); 
 		model.put("forum", forum);
-		return "bbs/manager/forumSet";
+		return "manager/forumSet";
 	} 
 	
 	//删除版主
 	@RequestMapping(params="method=deletemaster")
 	public String delmaster(ForumMaster forumMaster,ModelMap model,HttpServletRequest request, HttpServletResponse response){
 		fmSvc.delForumManager(forumMaster);
-		return "redirect:/bbs/forumset.do?method=list&forumID="+request.getParameter("forumID");
+		return "redirect:/forumset.do?method=list&forumID="+request.getParameter("forumID");
 	}
 	
 	
@@ -50,7 +50,7 @@ public class ForumSetController{
 		List<String> errors=new ArrayList<String>();
 		switch(x){
 		case 0:{
-			return "redirect:/bbs/forumset.do?method=list&forumID="+request.getParameter("forumID");
+			return "redirect:/forumset.do?method=list&forumID="+request.getParameter("forumID");
 		}
 		case 1: {
 			errors.add("指定用户不存在");
@@ -62,7 +62,7 @@ public class ForumSetController{
 			model.put("errors",errors);
 			break;
 		}
-		return "bbs/manager/errors";
+		return "manager/errors";
 	}
 		
 	
