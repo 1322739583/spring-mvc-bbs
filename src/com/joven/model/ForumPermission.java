@@ -1,24 +1,19 @@
 package com.joven.model;
 
-import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="bbs_forumpermission")
 public class ForumPermission {
-	private String id;
-	private Integer roleID;
-	private Integer forumID; 
-
 	private boolean viewList;
 	private boolean viewDetail;
 	private boolean addTopic;
 	private boolean replyTopic;
 	private boolean modifyTopic;
 	private boolean deleteTopic;
-	
+	private ForumPermissionPK fpPK;
 	
 	public boolean getViewList() {
 		return viewList;
@@ -57,27 +52,11 @@ public class ForumPermission {
 		this.deleteTopic = deleteTopic;
 	}
 	
-	public Integer getRoleID() {
-		return roleID;
+	@EmbeddedId
+	public ForumPermissionPK getFpPK() {
+		return fpPK;
 	}
-	public void setRoleID(Integer roleID) {
-		this.roleID = roleID;
+	public void setFpPK(ForumPermissionPK fpPK) {
+		this.fpPK = fpPK;
 	}
-	public Integer getForumID() {
-		return forumID;
-	}
-	public void setForumID(Integer forumID) {
-		this.forumID = forumID;
-	}
-	
-	@Id
-	@Column(name="permissionid")
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-
 }

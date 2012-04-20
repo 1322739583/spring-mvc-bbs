@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="group">
 				<!-- 显示部分 -->
 				<div id="fgshow${fg.id}">
-				<div class="flrt"><input type="button" value="修改" onclick="showedtgrp(${fg.id},true)"><input type="button" value="删除" onclick="delgroup(${fg.id})"></div>
+				<div class="floatright"><input type="button" value="修改" onclick="showedtgrp(${fg.id},true)"><input type="button" value="删除" onclick="delgroup(${fg.id})"></div>
 		    	${fg.name}
 		    	</div>
 		    	
@@ -138,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="forum">
 					 <!-- 显示部分 -->
 			    	<div id="fshow${f.id}">
-				    	<div class="flrt"><input type="button" value="修改"  onclick="showfed(${f.id},true)"><input type="button" value="删除" onclick="delforum(${f.id})"><input type="button" onclick="forumset(${f.id})" value="版块设置"></div>
+				    	<div class="floatright"><input type="button" value="修改"  onclick="showfed(${f.id},true)"><input type="button" value="删除" onclick="delforum(${f.id})"><input type="button" onclick="forumset(${f.id})" value="版块设置"></div>
 				    	<span class="fh2">${f.name}</span><br>描述：${f.description}
 			    	</div>
 			    	<!-- 修改部分 -->
