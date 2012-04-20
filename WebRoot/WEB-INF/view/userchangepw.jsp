@@ -1,37 +1,28 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <title>ÃÜÂëĞŞ¸Ä</title>
+    <title>å¯†ç ä¿®æ”¹</title>
+    <%@ include file="/common.jsp"%>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
   </head>
   
 <script type="text/javascript">
 function checkpost(){
 if(document.regform.oldpassWord.value==""){
-    alert("¾ÉÃÜÂë²»ÄÜÎª¿Õ");
+    alert("æ—§å¯†ç ä¸èƒ½ä¸ºç©º");
     return;
  }
  
  if(document.regform.passWord.value==""){
-    alert("ĞÂÃÜÂë²»ÄÜÎª¿Õ");
+    alert("æ–°å¯†ç ä¸èƒ½ä¸ºç©º");
     return;
  }
  
   if(document.regform.passWord.value!=document.regform.passWordc.value){
-    alert("Á½´ÎÊäÈëµÄÃÜÂë²»Ò»Ñù¡£");
+    alert("ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€æ ·ã€‚");
     return;
  }
  document.regform.submit();
@@ -45,34 +36,32 @@ if(document.regform.oldpassWord.value==""){
 
     <div id="main">
     
-    <div Style="MARGIN: 6px 6px;">
-	<span style="float:right"><a href="javascript:history.back()">[ ·µ»Ø  ]</a></span>	
-	¡ù<B><a href="grouplistAllData.action">¡¾ÂÛÌ³Ê×Ò³¡¿</a></B>&nbsp;-&nbsp;
-	<B><a href="userinfo.action">¡¾ÓÃ»§×ÊÁÏ¡¿</a></B>&nbsp;-&nbsp;
-	ÓÃ»§ÃÜÂëĞŞ¸Ä
+    <div class="posti">
+	<span style="float:right"><a href="javascript:history.back()">[ è¿”å›  ]</a></span>	
+	â€»<B><a href="forumgroup.do?method=listForumGroups">ã€è®ºå›é¦–é¡µã€‘</a></B>&nbsp;-&nbsp;
+	<B><a href="user.do?method=info">ã€ç”¨æˆ·èµ„æ–™ã€‘</a></B>&nbsp;-&nbsp;
+	ç”¨æˆ·å¯†ç ä¿®æ”¹
     </div>
 
-	<s:set name="user" value="#session.user"/>
-
-	<!--      ÓÃ»§×ÊÁÏ±íµ¥        -->	
-	<FORM name="regform" action="userupdatePW.action" method="post" class="txt fsize" >
+	<!--      ç”¨æˆ·èµ„æ–™è¡¨å•        -->	
+	<FORM name="regform" action="user.do?method=updatepw" method="post" class="txt fsize" >
 	<input type="hidden" name="id" value="${userid}">
 	<table cellspacing="0" cellpadding="0" width="100%" >
 		    <tr>
-		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>ÓÃ»§×ÊÁÏ</b></td>
+		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>ç”¨æˆ·èµ„æ–™</b></td>
 		    </tr>
 		    <tr>
 		      <td bgcolor="#F9F9EC">
 				<center>  
-				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">»ù±¾ĞÅÏ¢</legend>
+				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">åŸºæœ¬ä¿¡æ¯</legend>
 				<table class="tbf">
-				<tr><td>¾ÉÃÜÂë£º</td><td><INPUT class="input" tabIndex="1" type="password" maxLength="30" size="40" name="oldpassWord"></td></tr>
-				<tr><td>ĞÂÃÜÂë:</td><td><INPUT class="input" tabIndex="2" type="password" maxLength="30" size="40" name="passWord"></td></tr>
-				<tr><td>È·ÈÏ£º</td><td><INPUT class="input" tabIndex="3" type="password" maxLength="30" size="40" name="passWordc"></td></tr>
+				<tr><td>æ—§å¯†ç ï¼š</td><td><INPUT class="input" tabIndex="1" type="password" maxLength="30" size="40" name="oldpassWord"></td></tr>
+				<tr><td>æ–°å¯†ç :</td><td><INPUT class="input" tabIndex="2" type="password" maxLength="30" size="40" name="passWord"></td></tr>
+				<tr><td>ç¡®è®¤ï¼š</td><td><INPUT class="input" tabIndex="3" type="password" maxLength="30" size="40" name="passWordc"></td></tr>
 				</table>
 				</fieldset>
 
-				<img src="images/submit.gif"  style="cursor:pointer;margin-top:10px" border="0" onclick="javacript:checkpost()" alt="Ìá½»"></img>
+				<img src="images/submit.gif"  style="cursor:pointer;margin-top:10px" border="0" onclick="javacript:checkpost()" alt="æäº¤"></img>
 				</center>
 				<br>
 				<br>

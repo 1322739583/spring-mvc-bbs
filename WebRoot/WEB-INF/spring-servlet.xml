@@ -29,7 +29,7 @@
 			<!-- 如果不配置或/*,将拦截所有的Controller 可以使用正则表达式对url进行匹配，从而更细粒度的进行拦截(.*/entryOrJsonController\.do\?action=reg.*);--> 
 	        <mvc:mapping path="/bbs/topic.do"/>
 	        <mvc:mapping path="/bbs/reply.do"/> 
-	        <bean class="com.joven.Interceptor.AuthorityInterceptor"/>
+	        <bean class="com.joven.Interceptor.FnAuthorityInterceptor"/>
 	    </mvc:interceptor> 
 	</mvc:interceptors>
 

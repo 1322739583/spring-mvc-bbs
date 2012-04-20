@@ -1,35 +1,28 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <title>ÓÃ»§×¢²á</title>
+    <title>ç”¨æˆ·æ³¨å†Œ</title>
+    <%@ include file="/common.jsp"%>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
   </head>
   
 <script type="text/javascript">
 function checkpost(){
    if(document.regform.id.value==""){
-    alert("ÓÃ»§Ãû²»ÄÜÎª¿Õ");
+    alert("ç”¨æˆ·åä¸èƒ½ä¸ºç©º");
     return;
  }
  if(document.regform.passWord.value==""){
-    alert("ÃÜÂë²»ÄÜÎª¿Õ");
+    alert("å¯†ç ä¸èƒ½ä¸ºç©º");
     return;
  }
  
   if(document.regform.passWord.value!=document.regform.passWordc.value){
-    alert("Á½´ÎÊäÈëµÄÃÜÂë²»Ò»Ñù¡£");
+    alert("ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€æ ·ã€‚");
     return;
  }
  
@@ -43,32 +36,32 @@ function checkpost(){
    <jsp:include page="showlogin.jsp"></jsp:include>
 
 	 <div class="posti">
-	 	<B><a href="forumgroup.do?method=listForumGroup">¡¾ÂÛÌ³Ê×Ò³¡¿</a></B>&nbsp;-&nbsp;ÂÛÌ³×¢²á
+	 	<B><a href="forumgroup.do?method=listForumGroup">ã€è®ºå›é¦–é¡µã€‘</a></B>&nbsp;-&nbsp;è®ºå›æ³¨å†Œ
 	 </div>
 	
     <div id="main">
-	<!--      ÓÃ»§×¢²á±íµ¥        -->	
+	<!--      ç”¨æˆ·æ³¨å†Œè¡¨å•        -->	
 	<FORM name="regform" action="user.do?method=register" method="post" class="txt fsize" >
 	<input type="hidden" name="action" value="add">		
 	<table cellspacing="0" cellpadding="0" width="100%" >
 		    <tr>
-		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>×¢²áĞÅÏ¢</b></td>
+		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>æ³¨å†Œä¿¡æ¯</b></td>
 		    </tr>
 		    <tr>
 		      <td bgcolor="#F9F9EC">
 				<center>  
-				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">»ù±¾ĞÅÏ¢</legend>
+				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">åŸºæœ¬ä¿¡æ¯</legend>
 				<table class="tbf">
-				<tr ><td>ÓÃ»§ID£º</td><td><INPUT class="input" tabIndex="1" type="text" maxLength="50" size="35" name="id"></td></tr>
-				<tr><td>ÃÜ Âë£º</td><td><INPUT class="input" tabIndex="2" type="password" maxLength="30" size="40" name="passWord"></td></tr>
-				<tr><td>È·ÈÏÃÜÂë£º</td><td><INPUT class="input" tabIndex="2" type="password" maxLength="30" size="40" name="passWordc"></td></tr>
+				<tr ><td>ç”¨æˆ·IDï¼š</td><td><INPUT class="input" tabIndex="1" type="text" maxLength="50" size="35" name="id"></td></tr>
+				<tr><td>å¯† ç ï¼š</td><td><INPUT class="input" tabIndex="2" type="password" maxLength="30" size="40" name="passWord"></td></tr>
+				<tr><td>ç¡®è®¤å¯†ç ï¼š</td><td><INPUT class="input" tabIndex="2" type="password" maxLength="30" size="40" name="passWordc"></td></tr>
 				<tr><td>E-mail:</td><td><INPUT class="input" tabIndex="2" type="text" maxLength="30" size="40" name="email"></td></tr>
-				<tr><td>ĞÔ±ğ:</td><td><input type="radio" name="sex" value="true" checked>ÄĞ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" value="false">Å®</td></tr>
+				<tr><td>æ€§åˆ«:</td><td><input type="radio" name="sex" value="true" checked>ç”·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" value="false">å¥³</td></tr>
 				</table>
 				</fieldset>
 				
 				
-				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">ÇëÑ¡ÔñÍ·Ïñ</legend>
+				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">è¯·é€‰æ‹©å¤´åƒ</legend>
 				<table>
 				<tr><td><img src="images/face/a.jpeg"/><input type="radio" name="face" value="a.jpeg" checked="checked">
 		<img src="images/face/b.jpeg"/><input type="radio" name="face" value="b.jpeg">
@@ -91,7 +84,7 @@ function checkpost(){
 				</table>
 				</fieldset>
 				
-				<img src="images/submit.gif"  style="cursor:pointer;margin-top:10px" border="0" onclick="javacript:checkpost()" alt="Ìá½»"></img>
+				<img src="images/submit.gif"  style="cursor:pointer;margin-top:10px" border="0" onclick="javacript:checkpost()" alt="æäº¤"></img>
 				</center>
 				<br>
 				<br>

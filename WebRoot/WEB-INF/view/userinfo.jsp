@@ -1,16 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <title>ÓÃ»§ÉèÖÃ</title>
+    <title>ç”¨æˆ·è®¾ç½®</title>
+    <%@ include file="/common.jsp"%>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -23,40 +17,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <div id="main">
     
-    <div Style="MARGIN: 6px 6px;"><span style="float:right"><a href="javascript:history.back()">[ ·µ»Ø  ]</a></span>
-	¡ù<B><a href="grouplistAllData.action">¡¾ÂÛÌ³Ê×Ò³¡¿</a></B>&nbsp;-&nbsp;ÓÃ»§ÉèÖÃ
+    <div class="posti"><span style="float:right"><a href="javascript:history.back()">[ è¿”å›  ]</a></span>
+	â€»<B><a href="forumgroup.do?method=listForumGroups">ã€è®ºå›é¦–é¡µã€‘</a></B>&nbsp;-&nbsp;ç”¨æˆ·è®¾ç½®
     </div>
 
-	<s:set name="user" value="#session.user"/>
-
-	<!--      ÓÃ»§×ÊÁÏ±íµ¥        -->	
+	<!--      ç”¨æˆ·èµ„æ–™è¡¨å•        -->	
 	<table cellspacing="0" cellpadding="0" width="100%" >
 		    <tr>
-		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>ÓÃ»§×ÊÁÏ</b></td>
+		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>ç”¨æˆ·èµ„æ–™</b></td>
 		    </tr>
 		    <tr>
 		      <td bgcolor="#F9F9EC">
 				<center>  
-				<fieldset style="margin:1% 30% 0% 30%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">»ù±¾ĞÅÏ¢</legend>
+				<fieldset style="margin:1% 30% 0% 30%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">åŸºæœ¬ä¿¡æ¯</legend>
 				<table class="tbf">
 				<tr>
 				<td rowspan="4" width="120"><img src="images/face/${user.face}"></td>
-				<td width="80">ÓÃ»§ID:</td>	<td>${user.id}</td>
+				<td width="80">ç”¨æˆ·ID:</td>	<td>${user.id}</td>
 				</tr>
 				<tr>
-				<td>ĞÔ±ğ:</td>	<td><s:if test="#user.sex">ÄĞ</s:if><s:else>Å®</s:else></td>
+				<td>æ€§åˆ«:</td>	<td>${user.sex?'ç”·':'å¥³'}</td>
 				</tr>
 				<tr>
 				<td>email:</td>	<td>${user.email}</td>
 				</tr>
 				<tr>
-				<td>×¢²áÈÕÆÚ:</td><td><s:date name="#user.regDate" format="yyyy-MM-dd"/></td>
+				<td>æ³¨å†Œæ—¥æœŸ:</td><td><fmt:formatDate value="${user.regDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 				</table>
 				</fieldset>
 				<br>
-				<a href="userupdate.jsp"><img src="images/btnupdate.gif" alt="ĞŞ¸Ä×ÊÁÏ" border="0"/></a>
-				<a href="userchangepw.jsp"><img src="images/btnpw.gif" alt="ĞŞ¸ÄÃÜÂë" border="0" /></a>
+				<a href="userupdate.jsp"><img src="images/btnupdate.gif" alt="ä¿®æ”¹èµ„æ–™" border="0"/></a>
+				<a href="userchangepw.jsp"><img src="images/btnpw.gif" alt="ä¿®æ”¹å¯†ç " border="0" /></a>
 				</center>
 				<br>
 				<br>
