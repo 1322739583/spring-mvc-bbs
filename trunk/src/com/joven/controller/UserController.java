@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sun.org.apache.commons.beanutils.BeanUtils;
 import com.joven.model.User;
@@ -21,9 +22,16 @@ public class UserController  {
 	
 	@Resource(name="userServiceImp")
 	private UserService userService;
+	
+	
+    //到论坛登录页
+	@RequestMapping(params="method=login",method=RequestMethod.GET)
+	public String toLogin(User user,ModelMap model,HttpServletRequest request, HttpServletResponse response){
+		return "login";
+	}
 	 
 	//普通会员登录 
-	@RequestMapping(params="method=login")
+	@RequestMapping(params="method=login",method=RequestMethod.POST)
 	public String login(User user,ModelMap model,HttpServletRequest request, HttpServletResponse response){
 		User loginUser=userService.getUser(user.getId()); 
 		if (loginUser==null){
@@ -43,7 +51,7 @@ public class UserController  {
 			request.getSession().setAttribute("user", loginUser);
 			request.getSession().setAttribute("userid", loginUser.getId());
 			request.getSession().setAttribute("role",loginUser.getRole());
-			return "index";
+			return "forumlist";
 		}
 	}
 	
@@ -80,8 +88,14 @@ public class UserController  {
 			return "index";
 	}
 	
-	//新增用户
-	@RequestMapping(params="method=add")
+	@RequestMapping(params="method=register",method=RequestMethod.GET)
+	public String toRegister(ModelMap model,HttpServletRequest request, HttpServletResponse response){
+		return "register";
+	}
+	
+	
+	//用户注册
+	@RequestMapping(params="method=register",method=RequestMethod.POST)
 	public String Add(User user,ModelMap model,HttpServletRequest request, HttpServletResponse response){
 		if (user.getId().trim().equals("")) {
 			model.put("error","用户ID不能为空");
@@ -97,7 +111,7 @@ public class UserController  {
 		user.setRole(1);
 		int rt = userService.addUser(user);
 		switch (rt) {
-		case 0:return "login";
+		case 0:return login(user, model, request, response);
 		case 1:
 			model.put("error","该邮箱已被注册过");
 			return "errors";

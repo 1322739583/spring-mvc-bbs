@@ -17,14 +17,13 @@
 }
 
 .posti {
-	height:31px;
-	line-height:31px;
-	width:100%;
-	background: url(../images/rightposition.jpg);
-	background-repeat: repeat-x;
-	border-left:1px solid #ccc;
-	border-right:1px solid #ccc;
-	margin:0 auto
+	height:30px;
+	line-height:30px;
+	width:98%;
+	background:url(../images/posit.jpg) repeat-x;
+	border:1px solid #bbd6f1;
+	margin:0 auto;
+	text-indent:1.5em
 }
 
 .bbsadminbtn {
