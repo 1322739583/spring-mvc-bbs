@@ -27,10 +27,10 @@
 			<table>
 			<tr><td><img src="<%=basePath%>/css/bbs/images/error.gif"/></td>
 			<td>
-				<c:forEach items="${errors}" var="error">
-					<div class="errorMessage">${error}</div>
+				<div class="error">${error}</div>
+				<c:forEach items="${errors}" var="err">
+					<div class="errorMessage">${err}</div>
 				</c:forEach>
-				<div class="errorMessage">${errormsg}</div>
 			</td>
 			<tr>
 			

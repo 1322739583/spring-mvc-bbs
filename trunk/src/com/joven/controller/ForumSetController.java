@@ -69,9 +69,6 @@ public class ForumSetController{
 	//更新权限
 	@RequestMapping(params="method=updatepermission")
 	public void updatePmsn(ForumPermission permission,ModelMap model,HttpServletRequest request, HttpServletResponse response) throws Exception{
-		if (permission.getId().trim().equals("")){
-			permission.setId("F"+permission.getForumID()+"R"+permission.getRoleID());
-		}
 		fpSvc.updateForumPermission(permission);
 		response.getWriter().write("saved");
 	}

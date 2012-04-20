@@ -49,11 +49,11 @@ function showedit(obj){
 	}
 }
 
-function postpm(){
+function postpm(obj){
 	  $.ajax({
 		   type: "POST",
 		   url: "forumset.do?method=updatepermission",
-		   data: $("#formpm").serialize(),
+		   data: $("#"+obj).serialize(),
 		   dataType:"text",
 		   success: function(msg){
 			   if (msg=="saved"){
@@ -87,6 +87,7 @@ function postpm(){
 		
 		<c:forEach items="${forum.permission}" var="pms">
 			<c:if test="${pms.fpPK.roleID eq 1}"> <c:set var="memberPms" value="${pms}"/> </c:if>
+			<c:if test="${pms.fpPK.roleID eq 0}"> <c:set var="custmPms" value="${pms}"/></c:if>
 		</c:forEach>
 		
 		<div id="main">
@@ -130,9 +131,23 @@ function postpm(){
 		<tr align="left">
 			<!-- 用户权限 -->
 			<td valign="top">
+				<form id="formpmcustm" action="forumset.do?method=updatepermission" method="post">
+				<input type="hidden" name="fpPK.roleID" value="0">
+				<input type="hidden" name="fpPK.forumID" value="${forum.id}">
+				<table width="300" cellspacing="1" class="tbpemission">
+				<tr><th colspan="2" align="center">游客权限设置</th></tr>
+				<tr class="trtitle" align="center"><td > 功能 </td><td>是否允许</td></tr>
+				<tr><td> 浏览列表 </td><td><input type="checkbox" name="viewList" value="true" ${custmPms.viewList?'checked':''}/></td></tr>
+				<tr><td> 浏览明细 </td><td><input type="checkbox" name="viewDetail" value="true" ${custmPms.viewDetail?'checked':''}/></td></tr>
+				<tr><td colspan="2" align="center"><input type="button" id="savepm" onclick="postpm('formpmcustm');" value=" 保 存 " /></td></tr>
+				</table>
+				</form>
+				<br/>
+			
+			
 				<form id="formpm" action="forumset.do?method=updatepermission" method="post">
-				<input type="hidden" name="roleID" value="1">
-				<input type="hidden" name="forumID" value="${forum.id}">
+				<input type="hidden" name="fpPK.roleID" value="1">
+				<input type="hidden" name="fpPK.forumID" value="${forum.id}">
 				<table width="300" cellspacing="1" class="tbpemission">
 				<tr><th colspan="2" align="center">普通用户权限设置</th></tr>
 				<tr class="trtitle" align="center"><td > 功能 </td><td>是否允许</td></tr>
@@ -142,7 +157,7 @@ function postpm(){
 				<tr><td> 修改帖子</td><td><input type="checkbox" name="modifyTopic" value="true" ${memberPms.modifyTopic?'checked':''}/></td></tr>
 				<tr><td> 删除帖子</td><td><input type="checkbox" name="deleteTopic" value="true" ${memberPms.deleteTopic?'checked':''}/></td></tr>
 				<tr><td> 回复帖子 </td><td><input type="checkbox" name="replyTopic" value="true" ${memberPms.replyTopic?'checked':''}/></td></tr>
-				<tr><td colspan="2" align="center"><input type="button" id="savepm" onclick="postpm();" value=" 保 存 " /></td></tr>
+				<tr><td colspan="2" align="center"><input type="button" id="savepm" onclick="postpm('formpm');" value=" 保 存 " /></td></tr>
 				</table>
 				</form>
 				
