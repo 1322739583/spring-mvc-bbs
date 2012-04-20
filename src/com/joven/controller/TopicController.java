@@ -19,7 +19,7 @@ import com.joven.service.ReplyService;
 import com.joven.service.TopicService;
 
 @Controller
-@RequestMapping("/bbs/topic.do")
+@RequestMapping("/topic.do")
 public class TopicController{
 	private int pageSize=20;  //主题列表每页显示记录数
 	private int rPageSize=10; //回复每页显示记录数
@@ -47,7 +47,7 @@ public class TopicController{
 		tpcList.setShowPage(1); //前后显示1个页码,一共显示3个页码
 		model.put("page", page);
 		model.put("tpcList",tpcList);
-		return "bbs/topiclist";
+		return "topiclist";
 	}
 
 	//查看帖子
@@ -61,7 +61,7 @@ public class TopicController{
 		Topic topic=topicService.getTopic(Integer.parseInt(request.getParameter("topicID")));
 		if (topic==null){
 			model.put("errormsg", "找不到所请求的帖子，该帖子可能已经被删除。");
-			return "bbs/errors";
+			return "errors";
 		}
 		
 		//取板块
@@ -76,7 +76,7 @@ public class TopicController{
 		model.put("rpList", rpList);
 		model.put("page", page);
 		//定向到显示页
-		return "bbs/topicview";
+		return "topicview";
 	} 
 	
 	//到新增帖子页
@@ -84,7 +84,7 @@ public class TopicController{
 	public String showAddTopic(ModelMap model,HttpServletRequest request, HttpServletResponse response){
 		Forum forum=forumService.getForum(Integer.parseInt(request.getParameter("forumID")),false);
 		model.put("forum", forum);
-		return "bbs/topicnew";
+		return "topicnew";
 	}
 	
 	//新增帖子
@@ -110,10 +110,10 @@ public class TopicController{
 		Topic topic=topicService.getTopic(Integer.parseInt(request.getParameter("topicID")));
 		if (topic==null){
 			model.put("errormsg", "找不到所请求的帖子，该帖子可能已经被删除。");
-			return "bbs/errors"; 
+			return "errors"; 
 		}
 		model.put("topic", topic);
-		return "bbs/topicupdate";
+		return "topicupdate";
 	}
 	
 	//更新帖子
@@ -123,7 +123,7 @@ public class TopicController{
 		Topic dbtopic= topicService.getTopic(topic.getTopicID());
 		if (dbtopic==null){
 			model.put("errormsg", "找不到所请求的帖子，该帖子可能已经被删除。");
-			return "bbs/errors";
+			return "errors";
 		}
 		dbtopic.setTitle(StrUtils.HtmlEncode(topic.getTitle()));
 		dbtopic.setContent(topic.getContent());

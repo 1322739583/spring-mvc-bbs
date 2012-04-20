@@ -18,8 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
-	<script src="<%=basePath%>/js/jquery-1.4.4.min.js"></script>
-	<link href="<%=basePath%>/css/bbs/style/style.css" rel="stylesheet" type="text/css" />
+	<script src="<%=basePath%>/script/jquery-1.4.4.min.js"></script>
+	<link href="<%=basePath%>/style/style.css" rel="stylesheet" type="text/css" />
   </head>
      
  <script type="text/javascript">
@@ -38,20 +38,25 @@ function keyPress() {
 }
 
 function goToPage(page){
-	location='<%=basePath%>bbs/topic.do?method=list&forumID=${forum.id}&page='+page;
+	location='<%=basePath%>topic.do?method=list&forumID=${forum.id}&page='+page;
 }
  </script>         
      
  <body>
+     <jsp:include page="banner.jsp"></jsp:include>
+    <jsp:include page="showlogin.jsp"></jsp:include>
+    <br>
+    
     <!-- 导航区 -->
-    <div class="posti"><div class="homePic"></div>您现在的位置：
-    	 <B><a href="bbs/forumgroup.do?method=listForumGroups">【论坛首页】</a>&nbsp;-&nbsp;
-	     <a href="bbs/forumgroup.do?method=listForumGroups&fgid=${forum.forumGroup.id}">【${forum.forumGroup.name}】</a>&nbsp;-&nbsp;
+    <div class="posti">
+    	 <B><a href="forumgroup.do?method=listForumGroups">【论坛首页】</a>&nbsp;-&nbsp;
+	     <a href="forumgroup.do?method=listForumGroups&forumgroupid=${forum.forumGroup.id}">【${forum.forumGroup.name}】</a>&nbsp;-&nbsp;
 	  	</B>帖子列表
+    </div>
     </div>
 
    <div id="postsmain">
-    <span style="float:right">本版帖子数:${forum.totalTopics}</span><a href="bbs/topic.do?method=add&forumID=${forum.id}"><img src="css/bbs/images/postnew.jpg" border="0">&nbsp;</a>
+    <span style="float:right">本版帖子数:${forum.totalTopics}</span><a href="topic.do?method=add&forumID=${forum.id}"><img src="images/postnew.jpg" border="0">&nbsp;</a>
     <br>
 
    <!-- 帖子列表区 -->
@@ -76,8 +81,8 @@ function goToPage(page){
 			
 		<c:forEach items="${tpcList.data}" var="tpc">
 			<TR class="tr3">
-				<TD><IMG src="css/bbs/images/navigation-right.jpg" border=0></TD>
-				<TD style="FONT-SIZE: 13px"><A href="bbs/topic.do?method=view&forumID=${forum.id}&topicID=${tpc.topicID}" title="${tpc.title}">${tpc.title}</A></TD>
+				<TD><IMG src="images/navigation-right.jpg" border=0></TD>
+				<TD style="FONT-SIZE: 13px"><A href="topic.do?method=view&forumID=${forum.id}&topicID=${tpc.topicID}" title="${tpc.title}">${tpc.title}</A></TD>
 				<TD align="center">${tpc.author.account}</TD>
 				<TD align="center">${tpc.totalReply}</TD>
 				<TD  align="center"><span style="font-size:10pt;white-space: nowrap;"><fmt:formatDate value="${tpc.lastReplyDate}" pattern="yyyy-MM-dd HH:mm:ss"/> / ${tpc.lastReplyUserID}</span></TD>
@@ -101,7 +106,7 @@ function goToPage(page){
 			<c:forEach items="${tpcList.pageList}" var="num">
 				<c:choose>
 					<c:when test="${num eq page}">${num}</c:when>
-					<c:otherwise><a href="bbs/topic.do?method=list&forumID=${forum.id}&page=${num}">${num}</a></c:otherwise>
+					<c:otherwise><a href="topic.do?method=list&forumID=${forum.id}&page=${num}">${num}</a></c:otherwise>
 				</c:choose>
 			</c:forEach>
 			  	

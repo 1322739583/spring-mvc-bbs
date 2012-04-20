@@ -19,7 +19,7 @@ import com.joven.service.TopicService;
 import com.joven.utils.StrUtils;
 
 @Controller
-@RequestMapping("bbs/reply.do")
+@RequestMapping("/reply.do")
 public class ReplyController{
 
 	@Resource(name="replyServiceImp")
@@ -42,7 +42,7 @@ public class ReplyController{
 		model.put("forum", forum);
 		 
 		//定向到显示页
-		return "bbs/replynew";
+		return "replynew";
 	}
 	
 	
@@ -73,7 +73,7 @@ public class ReplyController{
 		model.put("reply", dbreply);
 		
 		//定向到显示页
-		return "bbs/replyupdate";
+		return "replyupdate";
 	}
 	
 	//修改回复

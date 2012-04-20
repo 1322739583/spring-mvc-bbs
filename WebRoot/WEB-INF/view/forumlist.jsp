@@ -18,17 +18,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
-    <script src="<%=basePath%>/js/jquery-1.4.4.min.js"></script>
-	<link href="<%=basePath%>/css/bbs/style/style.css" rel="stylesheet" type="text/css" />
+    <script src="<%=basePath%>/script/jquery-1.4.4.min.js"></script>
+	<link href="<%=basePath%>/style/style.css" rel="stylesheet" type="text/css" />
   </head>
     
   <body>    
-    <div class="posti"><div class="homePic"></div>您现在的位置：
+    <jsp:include page="banner.jsp"></jsp:include>
+    <jsp:include page="showlogin.jsp"></jsp:include>
+    <br>   
+  
+    <div class="posti">
     <c:choose>
     	<c:when test="${fgid eq -1}">【论坛首页】</c:when>
-    	<c:otherwise><B><a href="bbs/forumgroup.do?method=listForumGroups">【论坛首页】</a></B>&nbsp;&nbsp;-&nbsp;&nbsp;论坛列表</c:otherwise>
+    	<c:otherwise><B><a href="forumgroup.do?method=listForumGroups">【论坛首页】</a></B>&nbsp;&nbsp;-&nbsp;&nbsp;论坛列表</c:otherwise>
     </c:choose>
-    </div><br/>
+    </div>
+    </div>
        
     <div id="postsmain">
     
@@ -41,11 +46,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 
 			 <c:forEach items="${fg.forums}" var="f">
 			 	<tr class="tr3">
-				<td width="5%"><IMG src="css/bbs/images/bard.jpeg"></td>
+				<td width="5%"><IMG src="images/bard.jpeg"></td>
 				 <td>
-					 <a href="bbs/topic.do?method=list&forumID=${f.id}">${f.name}</a>
+					 <a href="topic.do?method=list&forumID=${f.id}">${f.name}</a>
 					 <div class="fgnote">
-					 	<img src="css/bbs/images/fginfo.gif"></img>
+					 	<img src="images/fginfo.gif"></img>
 					 	<span style="vertical-align:TOP">  ${f.description}</span>
 					 </div>
 					 <div class="fgmaster">版主: 
@@ -55,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 
 				 <td width="7%" align="center">${f.totalTopics}</td>
 				 <td width="30%" class="fgtopic">
-				 	<div class="tpcTitle">主题：<a href="bbs/topic.do?method=view&forumID=${f.id}&topicID=${f.topicID}" title="${f.topicTitle}">${f.topicTitle}</a></div>
+				 	<div class="tpcTitle">主题：<a href="topic.do?method=view&forumID=${f.id}&topicID=${f.topicID}" title="${f.topicTitle}">${f.topicTitle}</a></div>
 				 	作者：${f.userID}<br>日期：<fmt:formatDate value="${f.topicDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				 </td>
 				 </tr> 
@@ -67,5 +72,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </c:forEach>
     
 	</div>
+	<%@include file="copyright.jsp"%>
   </body>
 </html>
