@@ -10,7 +10,7 @@ import com.joven.model.Topic;
 import com.joven.service.TopicService;
 
 @Component("topicServiceImp")
-public class TopicServiceImp extends BaseServiceImp implements TopicService {
+public class TopicServiceImp extends BaseServiceImp<Topic,Integer> implements TopicService {
 	//新增帖子
 	@Transactional(propagation=Propagation.REQUIRED)
 	public boolean addTopic(Topic topic){

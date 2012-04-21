@@ -9,7 +9,7 @@ import com.joven.model.ForumPermissionPK;
 import com.joven.service.ForumPermissionService;
 
 @Component("forumPermissionServiceImp")
-public class ForumPermissionServiceImp extends BaseServiceImp implements ForumPermissionService {
+public class ForumPermissionServiceImp extends BaseServiceImp<ForumPermission,String> implements ForumPermissionService {
 	//不存在则新增，存在则更新
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void updateForumPermission(ForumPermission fPermission){

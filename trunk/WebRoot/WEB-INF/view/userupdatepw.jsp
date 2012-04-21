@@ -34,27 +34,25 @@ if(document.regform.oldpassWord.value==""){
    <jsp:include page="banner.jsp"></jsp:include>
    <jsp:include page="showlogin.jsp"></jsp:include>
 
-    <div id="main">
-    
-    <div class="posti">
-	<span style="float:right"><a href="javascript:history.back()">[ 返回  ]</a></span>	
-	※<B><a href="forumgroup.do?method=listForumGroups">【论坛首页】</a></B>&nbsp;-&nbsp;
-	<B><a href="user.do?method=info">【用户资料】</a></B>&nbsp;-&nbsp;
-	用户密码修改
-    </div>
+	<div class="position">
+		<span class="floatright"><a href="javascript:history.back()">[返回]</a>&nbsp;</span>
+	    <a href="forumgroup.do?method=listForumGroups">【论坛首页】</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+	    <a href="user.do?method=info">【用户资料】</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+	   	用户密码修改
+	 </div>
 
 	<!--      用户资料表单        -->	
-	<FORM name="regform" action="user.do?method=updatepw" method="post" class="txt fsize" >
+	<FORM name="regform" action="user.do?method=updatepw" method="post">
 	<input type="hidden" name="id" value="${userid}">
-	<table cellspacing="0" cellpadding="0" width="100%" >
+	<table cellspacing="1" class="tb">
 		    <tr>
-		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>用户资料</b></td>
+		      <th><b>用户资料</b></th>
 		    </tr>
 		    <tr>
 		      <td bgcolor="#F9F9EC">
 				<center>  
-				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">基本信息</legend>
-				<table class="tbf">
+				<fieldset><legend>修改密码</legend>
+				<table>
 				<tr><td>旧密码：</td><td><INPUT class="input" tabIndex="1" type="password" maxLength="30" size="40" name="oldpassWord"></td></tr>
 				<tr><td>新密码:</td><td><INPUT class="input" tabIndex="2" type="password" maxLength="30" size="40" name="passWord"></td></tr>
 				<tr><td>确认：</td><td><INPUT class="input" tabIndex="3" type="password" maxLength="30" size="40" name="passWordc"></td></tr>
@@ -72,6 +70,5 @@ if(document.regform.oldpassWord.value==""){
 	
 	
 	<%@include file="copyright.jsp"%>
-   </div> 
   </body>
 </html>

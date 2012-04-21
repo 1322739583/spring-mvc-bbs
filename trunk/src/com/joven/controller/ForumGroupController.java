@@ -33,13 +33,13 @@ public class ForumGroupController{
 	@RequestMapping(params = "method=listForumGroups")
 	public String listForumGroupData(ModelMap model,
 			HttpServletRequest request, HttpServletResponse response){
-		int fgid=-1;
-		if (request.getParameter("fgid")!=null){
-			fgid=Integer.parseInt(request.getParameter("fgid"));
+		int forumgroupid=-1;
+		if (request.getParameter("forumgroupid")!=null){
+			forumgroupid=Integer.parseInt(request.getParameter("forumgroupid"));
 		}
-		List<ForumGroup> forumGrps=forumGroupService.getFGDatas(fgid);
+		List<ForumGroup> forumGrps=forumGroupService.getFGDatas(forumgroupid);
 		model.addAttribute("forumGrps",forumGrps);
-		model.put("fgid", fgid);
+		model.put("forumgroupid", forumgroupid);
 		return "forumlist";
 	}
 	

@@ -8,7 +8,7 @@ import com.joven.model.ForumMaster;
 import com.joven.service.ForumMasterService;
 
 @Component("forumMasterServiceImp")
-public class ForumMasterServiceImp extends BaseServiceImp implements ForumMasterService {
+public class ForumMasterServiceImp extends BaseServiceImp<ForumMaster,Integer> implements ForumMasterService {
 	
 	//0添加成功，1用户不存在，2版主已存在
 	@Transactional(propagation=Propagation.REQUIRED)

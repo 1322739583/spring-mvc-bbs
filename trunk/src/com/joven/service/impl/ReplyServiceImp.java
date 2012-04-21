@@ -12,7 +12,7 @@ import com.joven.model.Topic;
 import com.joven.service.ReplyService;
 
 @Component("replyServiceImp")
-public class ReplyServiceImp extends BaseServiceImp implements ReplyService{
+public class ReplyServiceImp extends BaseServiceImp<Reply,Integer> implements ReplyService{
 	//添加回复
 	@Transactional(propagation=Propagation.REQUIRED)
 	public boolean addReply(Reply reply){

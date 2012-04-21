@@ -7,7 +7,7 @@ import com.joven.service.UserService;
 import com.joven.model.User;
 
 @Component("userServiceImp")
-public class UserServiceImp extends BaseServiceImp implements UserService {
+public class UserServiceImp extends BaseServiceImp<User,String> implements UserService {
 
 	//新增用户 0成功，1邮箱已存在 2用户已存在
 	public int addUser(User user){
@@ -23,7 +23,7 @@ public class UserServiceImp extends BaseServiceImp implements UserService {
 		}
 		
 		//保存用户
-		dao.save(user);
+		save(user);
 		return 0;
 	}
 	
@@ -36,7 +36,7 @@ public class UserServiceImp extends BaseServiceImp implements UserService {
 		}
 		
 		//更新用户
-		dao.update(user);
+		update(user);
 		return 0;
 	}
 

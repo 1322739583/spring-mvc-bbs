@@ -1,16 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=gbk" pageEncoding="gbk"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %> 
 
-<Link rel="stylesheet" type="text/css" href="style/style.css" />
-<DIV class="showlogin">
-	<%
-		String showLoginID = (String) session.getAttribute("userid");
-		if (showLoginID == null) {
-	%>
-
-	&nbsp;&nbsp;ÄúÉÐÎ´µÇÂ¼ <a href="user.do?method=login">µÇÂ¼</a>&nbsp;| &nbsp;<A href="user.do?method=register">×¢²á</A>
-
-	<%} else {%>
-
-	&nbsp;»¶Ó­:&nbsp;<%=showLoginID%>&nbsp;&nbsp;<a href="user.do?method=info">[ÉèÖÃ]</a>&nbsp;&nbsp;<a href="user.do?method=logout">[ÍË³ö]</a>
-	<%}%>
-</DIV>
+<div class="showlogin">
+	<c:choose>
+		<c:when test="${sessionScope.user eq null}">
+			æ‚¨å°šæœªç™»å½• <a href="user.do?method=login">ç™»å½•</a>&nbsp;| &nbsp;<A href="user.do?method=register">æ³¨å†Œ</A>
+		</c:when>
+		<c:otherwise>
+			æ¬¢è¿Ž:&nbsp;${sessionScope.user.id}&nbsp;&nbsp;<a href="user.do?method=info">[è®¾ç½®]</a>&nbsp;&nbsp;<a href="user.do?method=logout">[é€€å‡º]</a>
+		</c:otherwise>
+	</c:choose>
+</div>
