@@ -1,15 +1,15 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>ÂÛÌ³ºóÌ¨µÇÂ¼</title>
+    <title>è®ºå›åå°ç™»å½•</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -29,23 +29,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 <form action="manager/usersyslogin.action" method="post">
 	  <table width="314" cellspacing="1" class="tb" align="center">
 	    <tr>
-	      <th colspan="2" scope="col">ÂÛÌ³ºóÌ¨µÇÂ¼</th>
+	      <th colspan="2" scope="col">è®ºå›åå°ç™»å½•</th>
 	    </tr>
 	    <tr>
 	      <td colspan="2" align="center"><table width="264" >
 	        <tr>
-	          <td width="72" align="right" scope="col">ÓÃ»§Ãû£º</td>
+	          <td width="72" align="right" scope="col">ç”¨æˆ·åï¼š</td>
 	          <td width="176" scope="col"><input type="text" name="id"/></td>
 	          </tr>
 	        <tr>
-	          <td align="right">ÃÜÂë£º</td>
+	          <td align="right">å¯†ç ï¼š</td>
 	          <td><input type="password" name="passWord" /></td>
 	          </tr>
 	        </table>
 	        <br />
 	       
-	          <input type="submit"  value=" Ìá ½» " /> 
-	          <input type="reset"  value=" ÖØ ÖÃ " />
+	          <input type="submit"  value=" æ äº¤ " /> 
+	          <input type="reset"  value=" é‡ ç½® " />
 	          <br />
 	          <br />
 	       

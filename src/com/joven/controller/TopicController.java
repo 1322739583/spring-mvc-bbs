@@ -60,7 +60,7 @@ public class TopicController{
 		//取帖子
 		Topic topic=topicService.getTopic(Integer.parseInt(request.getParameter("topicID")));
 		if (topic==null){
-			model.put("errormsg", "找不到所请求的帖子，该帖子可能已经被删除。");
+			model.put("error", "找不到所请求的帖子，该帖子可能已经被删除。");
 			return "errors";
 		}
 		
@@ -109,7 +109,7 @@ public class TopicController{
 		model.put("forum", forum);
 		Topic topic=topicService.getTopic(Integer.parseInt(request.getParameter("topicID")));
 		if (topic==null){
-			model.put("errormsg", "找不到所请求的帖子，该帖子可能已经被删除。");
+			model.put("error", "找不到所请求的帖子，该帖子可能已经被删除。");
 			return "errors"; 
 		}
 		model.put("topic", topic);
@@ -122,7 +122,7 @@ public class TopicController{
 		//保存
 		Topic dbtopic= topicService.getTopic(topic.getTopicID());
 		if (dbtopic==null){
-			model.put("errormsg", "找不到所请求的帖子，该帖子可能已经被删除。");
+			model.put("error", "找不到所请求的帖子，该帖子可能已经被删除。");
 			return "errors";
 		}
 		dbtopic.setTitle(StrUtils.HtmlEncode(topic.getTitle()));
