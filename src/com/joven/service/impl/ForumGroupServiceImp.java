@@ -102,7 +102,7 @@ public class ForumGroupServiceImp extends BaseServiceImp<ForumGroup,Integer> imp
 		}
 		else 
 		{
-			fglst=dao.find("from ForumGroup where fgID=? order by order",forumGroupID);
+			fglst=dao.find("from ForumGroup where forumGroupID=? order by order",forumGroupID);
 		}
 		
 		for(ForumGroup fg:fglst){

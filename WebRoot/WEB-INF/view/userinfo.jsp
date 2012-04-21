@@ -15,21 +15,20 @@
    <jsp:include page="banner.jsp"></jsp:include>
    <jsp:include page="showlogin.jsp"></jsp:include>
 
-    <div id="main">
-    
-    <div class="posti"><span style="float:right"><a href="javascript:history.back()">[ 返回  ]</a></span>
-	※<B><a href="forumgroup.do?method=listForumGroups">【论坛首页】</a></B>&nbsp;-&nbsp;用户设置
-    </div>
+    <div class="position">
+    	<span class="floatright"><a href="javascript:history.back()">[返回]</a>&nbsp;</span>
+	    <a href="forumgroup.do?method=listForumGroups">【论坛首页】</a>&nbsp;&nbsp;-&nbsp;&nbsp;用户设置
+	</div>
 
 	<!--      用户资料表单        -->	
-	<table cellspacing="0" cellpadding="0" width="100%" >
+	<table cellspacing="1" cellpadding="0" class="tb">
 		    <tr>
-		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>用户资料</b></td>
+		      <th><b>用户资料</b></th>
 		    </tr>
 		    <tr>
 		      <td bgcolor="#F9F9EC">
 				<center>  
-				<fieldset style="margin:1% 30% 0% 30%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">基本信息</legend>
+				<fieldset><legend>基本信息</legend>
 				<table class="tbf">
 				<tr>
 				<td rowspan="4" width="120"><img src="images/face/${user.face}"></td>
@@ -47,8 +46,8 @@
 				</table>
 				</fieldset>
 				<br>
-				<a href="userupdate.jsp"><img src="images/btnupdate.gif" alt="修改资料" border="0"/></a>
-				<a href="userchangepw.jsp"><img src="images/btnpw.gif" alt="修改密码" border="0" /></a>
+				<a href="user.do?method=update"><img src="images/btnupdate.gif" alt="修改资料" border="0"/></a>
+				<a href="user.do?method=updatepw"><img src="images/btnpw.gif" alt="修改密码" border="0" /></a>
 				</center>
 				<br>
 				<br>
@@ -58,6 +57,5 @@
 	
 	
 	<%@include file="copyright.jsp"%>
-   </div> 
   </body>
 </html>

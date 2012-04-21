@@ -1,51 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ page isELIgnored="false"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
     <title>英语学习论坛</title>
+    <%@ include file="/common.jsp"%>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
-    <script src="<%=basePath%>/script/jquery-1.4.4.min.js"></script>
-	<link href="<%=basePath%>/style/style.css" rel="stylesheet" type="text/css" />
   </head>
     
   <body>    
     <jsp:include page="banner.jsp"></jsp:include>
     <jsp:include page="showlogin.jsp"></jsp:include>
-    <br>   
-  
-    <div class="posti">
-    <c:choose>
-    	<c:when test="${fgid eq -1}">【论坛首页】</c:when>
-    	<c:otherwise><B><a href="forumgroup.do?method=listForumGroups">【论坛首页】</a></B>&nbsp;&nbsp;-&nbsp;&nbsp;论坛列表</c:otherwise>
-    </c:choose>
-    </div>
-    </div>
+   
+    <c:if test="${forumgroupid gt -1}">
+	    <div class="position">
+	    <a href="forumgroup.do?method=listForumGroups">【论坛首页】</a>&nbsp;&nbsp;-&nbsp;&nbsp;论坛列表
+	    </div>
+    </c:if> 
        
-    <div id="postsmain">
     
     <c:forEach items="${forumGrps}" var="fg">
-    <div class="txt">
-			 <table cellSpacing="0" cellPadding="0" class="tb">
+			 <table cellspacing="1" cellpadding="4" class="tb">
 			 
-			 <tr><th colspan="4" align="left" class="mailTitle">【${fg.name}】</th></tr>
-			 <tr  class="subtrbg" align="center"><td colspan="2">论坛</td><td>主题</td><td>最新发表</td></tr>
+			 <tr><th colspan="4">【${fg.name}】</th></tr>
+			 <tr  class="trtitle"><td colspan="2">论坛</td><td>主题</td><td>最新发表</td></tr>
 			 
 			 <c:forEach items="${fg.forums}" var="f">
-			 	<tr class="tr3">
+			 	<tr>
 				<td width="5%"><IMG src="images/bard.jpeg"></td>
 				 <td>
 					 <a href="topic.do?method=list&forumID=${f.id}">${f.name}</a>
@@ -67,11 +50,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 </c:forEach>
 			 
 			 </table>
-		 </div>
-    
+			 <br/>
     </c:forEach>
     
-	</div>
+
+    
 	<%@include file="copyright.jsp"%>
   </body>
 </html>

@@ -51,7 +51,7 @@ public class UserController  {
 			request.getSession().setAttribute("user", loginUser);
 			request.getSession().setAttribute("userid", loginUser.getId());
 			request.getSession().setAttribute("role",loginUser.getRole());
-			return "forumlist";
+			return "redirect:forumgroup.do?method=listForumGroups";
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class UserController  {
 	public String logout(ModelMap model,HttpServletRequest request, HttpServletResponse response){
 			HttpSession session=request.getSession();
 			session.invalidate();
-			return "index";
+			return "redirect:forumgroup.do?method=listForumGroups";
 	}
 	
 	@RequestMapping(params="method=register",method=RequestMethod.GET)
@@ -151,9 +151,15 @@ public class UserController  {
 		return "list";
 	}
 	
+	//到更新用户资料页
+	@RequestMapping(params="method=update",method=RequestMethod.GET)
+	public String toUpdate(ModelMap model,HttpServletRequest request, HttpServletResponse response){
+		return "userupdate";
+	}
+	
 	
 	//更新用户资料,注意更新session里的user
-	@RequestMapping(params="method=update")
+	@RequestMapping(params="method=update",method=RequestMethod.POST)
 	public String update(User user,ModelMap model,HttpServletRequest request, HttpServletResponse response){
 		User dbuser=userService.getUser(user.getId());
 		dbuser.setEmail(user.getEmail());
@@ -175,12 +181,17 @@ public class UserController  {
 				return "errors";
 		}
 		
-		return "info";
+		return "redirect:user.do?method=info";
 	}
 	
+	//到更新用户密码页
+	@RequestMapping(params="method=updatepw",method=RequestMethod.GET)
+	public String toUpdatePW(ModelMap model,HttpServletRequest request, HttpServletResponse response){
+		return "userupdatepw";
+	}
 	
 	//更新用户密码,注意更新session里的user
-	@RequestMapping(params="method=updatepw")
+	@RequestMapping(params="method=updatepw",method=RequestMethod.POST)
 	public String updatePW(User user,ModelMap model,HttpServletRequest request, HttpServletResponse response){
 		if (user.getPassWord().equals("")){
 			model.put("error","密码不能为空");
@@ -212,21 +223,21 @@ public class UserController  {
 			return "errors";
 		}
 		
-		return "info";
+		return "redirect:user.do?method=info";
 	}
 	
 	
 	//刷新session里的user
 	@RequestMapping(params="method=info")
-	public String info(User user,ModelMap model,HttpServletRequest request, HttpServletResponse response){
+	public String info(ModelMap model,HttpServletRequest request, HttpServletResponse response){
 		HttpSession session=request.getSession();
-		User suser=(User)session.getAttribute("user");
+		User user=(User)session.getAttribute("user");
 		
-		User dbuser=userService.getUser(suser.getId());
+		User dbuser=userService.getUser(user.getId());
 		if (dbuser!=null){
 			session.setAttribute("user", dbuser);
 		}
-		return "info"; 
+		return "userinfo"; 
 	}
 	
 

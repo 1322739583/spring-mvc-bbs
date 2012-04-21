@@ -10,45 +10,44 @@
   </head>
   
 <script type="text/javascript">
-function checkpost(){
- document.regform.submit();
-  }
-  
-  </script>
+	function checkpost(){
+	 	document.regform.submit();
+	  }
+</script>
   
   <body>
    <jsp:include page="banner.jsp"></jsp:include>
    <jsp:include page="showlogin.jsp"></jsp:include>
 
-    <div id="main">
-    
-    <div class="posti"><span style="float:right"><a href="javascript:history.back()">[ 返回  ]</a></span>
-   	※<B><a href="forumgroup.do?method=listForumGroups">【论坛首页】</a></B>&nbsp;-&nbsp;
-	<B><a href="user.do?method=info">【用户资料】</a></B>&nbsp;-&nbsp; 
+	<div class="position">
+    <span style="float:right"><a href="javascript:history.back()">[返回]</a>&nbsp;</span>
+   	<a href="forumgroup.do?method=listForumGroups">【论坛首页】</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+	<a href="user.do?method=info">【用户资料】</a>&nbsp;&nbsp;-&nbsp; &nbsp;
 	用户资料修改
     </div>
 
 	<!--      用户资料表单        -->	
-	<FORM name="regform" action="user.do?method=update" method="post" class="txt fsize" >
+	<FORM name="regform" action="user.do?method=update" method="post">
 	<input type="hidden" name="id" value="${userid}"> 
-	<table cellspacing="0" cellpadding="0" width="100%" >
+	<table cellspacing="1" class="tb">
 		    <tr>
-		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>用户资料</b></td>
+		      <th>用户资料</th>
 		    </tr>
 		    <tr>
 		      <td bgcolor="#F9F9EC">
 				<center>  
-				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">基本信息</legend>
+				<fieldset><legend>基本信息</legend>
 				<table class="tbf">
 				<tr><td>E-mail:</td><td><INPUT class="input" tabIndex="2" type="text" maxLength="30" size="40" name="email" value="${user.email}"></td></tr>
-				<tr><td>性别:</td><td><input type="radio" name="sex" value="TRUE" <c:if test="${user.sex}">checked</c:if> >男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" value="FALSE" <c:if test="${user.sex==0}">checked</c:if> >女</td></tr>
+				<tr><td>性别:</td><td><input type="radio" name="sex" value="TRUE" <c:if test="${user.sex}">checked</c:if> >男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" value="FALSE" <c:if test="${!user.sex}">checked</c:if> >女</td></tr>
 				</table>
 				</fieldset>
 				
 				
-				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">请选择头像</legend>
+				<fieldset><legend>请选择头像</legend>
 				<table>
-				<tr><td><img src="images/face/a.jpeg"/><input type="radio" name="face" value="a.jpeg" <c:if test="${user.face eq 'a.jpeg'}">checked="checked"</c:if> >
+				<tr><td>
+					<img src="images/face/a.jpeg"/><input type="radio" name="face" value="a.jpeg" <c:if test="${user.face eq 'a.jpeg'}">checked="checked"</c:if> >
 					<img src="images/face/b.jpeg"/><input type="radio" name="face" value="b.jpeg" <c:if test="${user.face eq 'b.jpeg'}">checked="checked"</c:if> >
 					<img src="images/face/c.jpeg"/><input type="radio" name="face" value="c.jpeg" <c:if test="${user.face eq 'c.jpeg'}">checked="checked"</c:if> >
 					<img src="images/face/d.jpeg"/><input type="radio" name="face" value="d.jpeg" <c:if test="${user.face eq 'd.jpeg'}">checked="checked"</c:if> >
@@ -80,6 +79,5 @@ function checkpost(){
 	
 	
 	<%@include file="copyright.jsp"%>
-   </div> 
   </body>
 </html>

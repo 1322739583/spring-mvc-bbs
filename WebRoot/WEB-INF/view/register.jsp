@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <title>用户注册</title>
@@ -35,33 +35,32 @@ function checkpost(){
    <jsp:include page="banner.jsp"></jsp:include>
    <jsp:include page="showlogin.jsp"></jsp:include>
 
-	 <div class="posti">
-	 	<B><a href="forumgroup.do?method=listForumGroup">【论坛首页】</a></B>&nbsp;-&nbsp;论坛注册
-	 </div>
+   <div class="position">
+	    <a href="forumgroup.do?method=listForumGroups">【论坛首页】</a>&nbsp;&nbsp;-&nbsp;&nbsp;论坛注册
+   </div> 
 	
-    <div id="main">
 	<!--      用户注册表单        -->	
-	<FORM name="regform" action="user.do?method=register" method="post" class="txt fsize" >
+	<FORM name="regform" action="user.do?method=register" method="post">
 	<input type="hidden" name="action" value="add">		
-	<table cellspacing="0" cellpadding="0" width="100%" >
+	<table cellspacing="1" class="tb" >
 		    <tr>
-		      <td class="txtsty fsize1" style="BORDER-BOTTOM:#a6cbe7 1px solid"><b>注册信息</b></td>
+		      <th>注册信息</th>
 		    </tr>
 		    <tr>
 		      <td bgcolor="#F9F9EC">
 				<center>  
-				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">基本信息</legend>
+				<fieldset><legend>基本信息</legend>
 				<table class="tbf">
-				<tr ><td>用户ID：</td><td><INPUT class="input" tabIndex="1" type="text" maxLength="50" size="35" name="id"></td></tr>
-				<tr><td>密 码：</td><td><INPUT class="input" tabIndex="2" type="password" maxLength="30" size="40" name="passWord"></td></tr>
-				<tr><td>确认密码：</td><td><INPUT class="input" tabIndex="2" type="password" maxLength="30" size="40" name="passWordc"></td></tr>
-				<tr><td>E-mail:</td><td><INPUT class="input" tabIndex="2" type="text" maxLength="30" size="40" name="email"></td></tr>
+				<tr ><td>用户ID：</td><td><input tabIndex="1" type="text" maxLength="50" size="40" name="id"></td></tr>
+				<tr><td>密 码：</td><td><input tabIndex="2" type="password" maxLength="30" size="40" name="passWord"></td></tr>
+				<tr><td>确认密码：</td><td><input tabIndex="2" type="password" maxLength="30" size="40" name="passWordc"></td></tr>
+				<tr><td>E-mail:</td><td><input tabIndex="2" type="text" maxLength="30" size="40" name="email"></td></tr>
 				<tr><td>性别:</td><td><input type="radio" name="sex" value="true" checked>男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" value="false">女</td></tr>
 				</table>
 				</fieldset>
 				
 				
-				<fieldset style="margin:1% 20% 0% 20%;border:1px solid #D4EFF7;padding-bottom:15px;font-size:10px"><legend style="padding:0 5px 0 5px;">请选择头像</legend>
+				<fieldset><legend style="padding:0 5px 0 5px;">请选择头像</legend>
 				<table>
 				<tr><td><img src="images/face/a.jpeg"/><input type="radio" name="face" value="a.jpeg" checked="checked">
 		<img src="images/face/b.jpeg"/><input type="radio" name="face" value="b.jpeg">
@@ -95,6 +94,5 @@ function checkpost(){
 	
 	
 	<%@include file="copyright.jsp"%>
-   </div> 
   </body>
 </html>
