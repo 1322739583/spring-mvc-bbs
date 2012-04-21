@@ -62,24 +62,28 @@ function checkpost(){
 				
 				<fieldset><legend style="padding:0 5px 0 5px;">请选择头像</legend>
 				<table>
-				<tr><td><img src="images/face/a.jpeg"/><input type="radio" name="face" value="a.jpeg" checked="checked">
-		<img src="images/face/b.jpeg"/><input type="radio" name="face" value="b.jpeg">
-		<img src="images/face/c.jpeg"/><input type="radio" name="face" value="c.jpeg">
-		<img src="images/face/d.jpeg"/><input type="radio" name="face" value="d.jpeg">
-		<img src="images/face/e.jpeg"/><input type="radio" name="face" value="e.jpeg">
-		<BR/>
-		<img src="images/face/f.jpeg"/><input type="radio" name="face" value="f.jpeg">
-		<img src="images/face/g.jpeg"/><input type="radio" name="face" value="g.jpeg">
-		<img src="images/face/h.jpeg"/><input type="radio" name="face" value="h.jpeg">
-		<img src="images/face/i.jpeg"/><input type="radio" name="face" value="i.jpeg">
-		<img src="images/face/j.jpeg"/><input type="radio" name="face" value="j.jpeg">
-		<BR/>
-		<img src="images/face/k.jpeg"/><input type="radio" name="face" value="k.jpeg"> 
-		<img src="images/face/l.jpeg"/><input type="radio" name="face" value="l.jpeg">
-		<img src="images/face/m.jpeg"/><input type="radio" name="face" value="m.jpeg">
-		<img src="images/face/n.jpeg"/><input type="radio" name="face" value="n.jpeg">
-		<img src="images/face/o.jpeg"/><input type="radio" name="face" value="o.jpeg">
-		<br/></td></tr>
+				<tr>
+				<td>
+					<img src="images/face/a.jpeg"/><input type="radio" name="face" value="a.jpeg" checked="checked">
+					<img src="images/face/b.jpeg"/><input type="radio" name="face" value="b.jpeg">
+					<img src="images/face/c.jpeg"/><input type="radio" name="face" value="c.jpeg">
+					<img src="images/face/d.jpeg"/><input type="radio" name="face" value="d.jpeg">
+					<img src="images/face/e.jpeg"/><input type="radio" name="face" value="e.jpeg">
+					<br/>
+					<img src="images/face/f.jpeg"/><input type="radio" name="face" value="f.jpeg">
+					<img src="images/face/g.jpeg"/><input type="radio" name="face" value="g.jpeg">
+					<img src="images/face/h.jpeg"/><input type="radio" name="face" value="h.jpeg">
+					<img src="images/face/i.jpeg"/><input type="radio" name="face" value="i.jpeg">
+					<img src="images/face/j.jpeg"/><input type="radio" name="face" value="j.jpeg">
+					<br/>
+					<img src="images/face/k.jpeg"/><input type="radio" name="face" value="k.jpeg"> 
+					<img src="images/face/l.jpeg"/><input type="radio" name="face" value="l.jpeg">
+					<img src="images/face/m.jpeg"/><input type="radio" name="face" value="m.jpeg">
+					<img src="images/face/n.jpeg"/><input type="radio" name="face" value="n.jpeg">
+					<img src="images/face/o.jpeg"/><input type="radio" name="face" value="o.jpeg">
+					<br/>
+				</td>
+				</tr>
 				</table>
 				</fieldset>
 				

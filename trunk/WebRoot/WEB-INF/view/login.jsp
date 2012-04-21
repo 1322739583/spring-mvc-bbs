@@ -1,20 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=gbk" pageEncoding="gbk"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <HTML>
 <HEAD>
-	<TITLE>ÂÛÌ³--µÇÂ¼</TITLE>
+	<TITLE>è®ºå›--ç™»å½•</TITLE>
 	<%@ include file="/common.jsp"%>
 </HEAD>
 
 <script language="javascript">
 function checkpost() {
  if(document.loginForm.id.value==""){
-    alert("ÓÃ»§Ãû²»ÄÜÎª¿Õ");
+    alert("ç”¨æˆ·åä¸èƒ½ä¸ºç©º");
     return;
  }
  if(document.loginForm.passWord.value==""){
-    alert("ÃÜÂë²»ÄÜÎª¿Õ");
+    alert("å¯†ç ä¸èƒ½ä¸ºç©º");
     return;
  }
  
@@ -27,10 +27,10 @@ function checkpost() {
     <jsp:include page="showlogin.jsp"></jsp:include>
     
 	<div class="position">
-	    <a href="forumgroup.do?method=listForumGroups">¡¾ÂÛÌ³Ê×Ò³¡¿</a>&nbsp;&nbsp;-&nbsp;&nbsp;ÂÛÌ³µÇÂ¼
+	    <a href="forumgroup.do?method=listForumGroups">ã€è®ºå›é¦–é¡µã€‘</a>&nbsp;&nbsp;-&nbsp;&nbsp;è®ºå›ç™»å½•
 	</div>
 
-	<!--      ÓÃ»§µÇÂ¼±íµ¥        -->	
+	<!--      ç”¨æˆ·ç™»å½•è¡¨å•        -->	
 	<FORM name="loginForm" action="user.do?method=login" method="post"  >
 	<table cellspacing="1" class="tb">
 		    <tr>
@@ -39,13 +39,13 @@ function checkpost() {
 		    <tr>
 		      <td bgcolor="#F9F9EC">
 				<center>  
-				<fieldset><legend>µÇÂ¼ĞÅÏ¢</legend>
+				<fieldset><legend>ç™»å½•ä¿¡æ¯</legend>
 				<table>
-				<tr><td>ÓÃ»§Ãû£º</td><td><INPUT tabIndex="1" type="text" maxLength="30" size="35" name="id"></td></tr>
-				<tr><td>ÃÜ Âë£º</td><td><INPUT tabIndex="2" type="password" maxLength="30" size="35" name="passWord"></td></tr>
+				<tr><td>ç”¨æˆ·åï¼š</td><td><INPUT tabIndex="1" type="text" maxLength="30" size="35" name="id"></td></tr>
+				<tr><td>å¯† ç ï¼š</td><td><INPUT tabIndex="2" type="password" maxLength="30" size="35" name="passWord"></td></tr>
 				</table>
 				</fieldset>
-				<img src="images/login.gif"  style="cursor:pointer;margin-top:5px" border="0" onclick="javacript:checkpost()" alt="Ìá½»"></img>
+				<img src="images/login.gif"  style="cursor:pointer;margin-top:5px" border="0" onclick="javacript:checkpost()" alt="æäº¤"></img>
 				</center>
 				<br>
 				<br>
