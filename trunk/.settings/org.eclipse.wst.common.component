@@ -3,7 +3,7 @@
     <wb-module deploy-name="springbbs">
         <wb-resource deploy-path="/" source-path="/WebRoot"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="/springbbs"/>
         <property name="java-output-path" value="/springbbs/WebRoot/WEB-INF/classes"/>
+        <property name="context-root" value="/bbs"/>
     </wb-module>
 </project-modules>
